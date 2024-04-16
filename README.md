@@ -1,4 +1,4 @@
-#Main goal of the project
+Main goal of the project:
 
 Make a web application that analyzes prices for goods on websites using a service written in Python using some kind of flask (there, in fact, you will need to write one crud and that’s it). The service will have to collect data from online stores and transfer it to the database.
 
