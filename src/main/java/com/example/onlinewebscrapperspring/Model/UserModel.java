@@ -15,7 +15,7 @@ public class UserModel {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private String id;
+    private Long id;
     @Column(unique=true, nullable=false, name = "username")
     private String username;
     @Column(name = "password", nullable = false)
