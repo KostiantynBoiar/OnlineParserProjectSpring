@@ -17,10 +17,10 @@ public class UserService {
         this.userRepository = userRepository;
     }
     public List<UserModel> getAllUsers() {
-        return userRepository.findAll();
+        return (List<UserModel>) userRepository.findAll();
     }
     public Optional<UserModel> getUserById(Long id) {
-        return userRepository.findModelById(id);
+        return userRepository.findById(id);
     }
     public UserModel createUser(UserModel userModel) {
         return userRepository.save(userModel);
@@ -30,5 +30,8 @@ public class UserService {
     }
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
+    }
+    public void deleteByEmail(String email){
+        userRepository.deleteByEmail(email);
     }
 }
