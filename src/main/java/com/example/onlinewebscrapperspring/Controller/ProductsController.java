@@ -4,8 +4,7 @@ import com.example.onlinewebscrapperspring.Model.ProductsModel;
 import com.example.onlinewebscrapperspring.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +23,25 @@ public class ProductsController {
     @GetMapping("/products/get")
     public List<ProductsModel> getProducts(){
         return productService.getAllProducts();
+    }
+    @PostMapping("/products/post")
+    public void addProduct(@RequestBody ProductsModel product){
+        productService.addProduct(product);
+    }
+    @PutMapping("/products/put")
+    public void updateProduct(@RequestBody ProductsModel product){
+        productService.updateProduct(product);
+    }
+    @DeleteMapping("/products/delete")
+    public void deleteProduct(@RequestBody ProductsModel product){
+        productService.deleteProduct(product);
+    }
+    @DeleteMapping("/products/delete/all")
+    public void deleteAllProducts(){
+        productService.deleteAllProducts();
+    }
+    @DeleteMapping("/products/delete/id")
+    public void deleteAllProductsById(@RequestParam Long id){
+        productService.deleteProductById(id);
     }
 }
