@@ -1,7 +1,10 @@
 package com.example.onlinewebscrapperspring.Model;
 
+import com.example.onlinewebscrapperspring.Model.Roles.Roles;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.Collection;
 
 @Entity
 @Table(name = "users", uniqueConstraints = {
@@ -27,5 +30,12 @@ public class UserModel {
     @Column(nullable=false, name = "email")
     private String email;
 
-
+    @ManyToMany
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "id"))
+    private Collection<Roles> roles;
 }
