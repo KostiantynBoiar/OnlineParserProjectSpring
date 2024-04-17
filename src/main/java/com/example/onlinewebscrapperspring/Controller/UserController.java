@@ -1,45 +1,46 @@
 package com.example.onlinewebscrapperspring.Controller;
 
 import com.example.onlinewebscrapperspring.Model.UserModel;
-import com.example.onlinewebscrapperspring.Repository.UserRepository;
+import com.example.onlinewebscrapperspring.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
 @Controller
 public class UserController {
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
-    @GetMapping("/users/all")
+    @GetMapping("/users/get")
     public List<UserModel> getAllUsers() {
-        return (List<UserModel>) userRepository.findAll();
+        return userService.getAllUsers();
     }
 
     @PostMapping("/users/post")
-    public void postUser(@ModelAttribute("userModel") UserModel userModel) {
-        userRepository.save(userModel);
+    public void postUser(@RequestBody UserModel userModel) {
+        userService.createUser(userModel);
     }
 
     @PutMapping("/users/put")
-    public void putUser(@ModelAttribute("userModel") UserModel userModel) {
-        userRepository.save(userModel);
+    public void putUser(@RequestBody UserModel userModel) {
+        userService.updateUser(userModel);
     }
 
     @DeleteMapping("/users/delete/id")
     public void deleteById(Long id){
-        userRepository.deleteById(id);
+        userService.deleteUser(id);
     }
 
     @DeleteMapping("/users/delete/email")
     public void deleteByEmail(String email){
-        userRepository.deleteByEmail(email);
+        userService.deleteByEmail(email);
     }
 
 

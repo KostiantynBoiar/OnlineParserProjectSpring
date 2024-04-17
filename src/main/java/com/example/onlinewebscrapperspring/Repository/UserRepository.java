@@ -6,9 +6,8 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
 
-public interface UserRepository extends CrudRepository<UserModel, Long> {
+public interface UserRepository extends JpaRepository<UserModel, Long> {
     void deleteById(Long id);
-    Optional<UserModel> findByEmail(String email);
-    Optional<UserModel> findAllByLastName(String email, String lastName);
+    Optional<UserModel> findById(Long id);
     void deleteByEmail(String email);
 }
