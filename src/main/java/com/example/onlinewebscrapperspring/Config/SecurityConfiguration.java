@@ -34,6 +34,10 @@ public class SecurityConfiguration {
             registry.requestMatchers("/login").permitAll();
             registry.requestMatchers("/admin/**").hasRole("ADMIN");
             registry.requestMatchers("/user/**").hasRole("USER");
+            registry.requestMatchers("/prducts/get").hasRole("USER");
+            registry.requestMatchers("/products/delete/**").hasRole("ADMIN");
+            registry.requestMatchers("/products/edit/**").hasRole("ADMIN");
+            registry.requestMatchers("/products/add/**").hasRole("ADMIN");
             registry.anyRequest().authenticated();
         })
                 .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
