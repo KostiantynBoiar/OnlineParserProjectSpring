@@ -1,18 +1,11 @@
-package com.example.onlinewebscrapperspring.Service;
+package com.example.onlinewebscrapperspring.Microservices.ProductService.Service;
 
-import com.example.onlinewebscrapperspring.Model.ProductsModel;
-import com.example.onlinewebscrapperspring.Repository.ProductRepository;
+import com.example.onlinewebscrapperspring.Microservices.ProductService.Model.ProductsModel;
+import com.example.onlinewebscrapperspring.Microservices.ProductService.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
 
 @Service
 public class ProductService {

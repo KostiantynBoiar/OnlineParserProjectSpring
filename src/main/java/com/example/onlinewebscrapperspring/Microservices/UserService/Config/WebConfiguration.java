@@ -1,4 +1,4 @@
-package com.example.onlinewebscrapperspring.Config;
+package com.example.onlinewebscrapperspring.Microservices.UserService.Config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

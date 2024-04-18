@@ -1,6 +1,6 @@
-package com.example.onlinewebscrapperspring.Repository;
+package com.example.onlinewebscrapperspring.Microservices.ProductService.Repository;
 
-import com.example.onlinewebscrapperspring.Model.ProductsModel;
+import com.example.onlinewebscrapperspring.Microservices.ProductService.Model.ProductsModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

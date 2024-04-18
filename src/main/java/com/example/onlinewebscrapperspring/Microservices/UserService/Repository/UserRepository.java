@@ -1,8 +1,7 @@
-package com.example.onlinewebscrapperspring.Repository;
+package com.example.onlinewebscrapperspring.Microservices.UserService.Repository;
 
-import com.example.onlinewebscrapperspring.Model.UserModel;
+import com.example.onlinewebscrapperspring.Microservices.UserService.Model.UserModel;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
 
