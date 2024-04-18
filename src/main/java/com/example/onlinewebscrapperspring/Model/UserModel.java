@@ -26,6 +26,7 @@ public class UserModel {
     private String lastName;
     @Column(nullable=false, name = "email")
     private String email;
-
+    private String phone;
+    private String role;
 
 }

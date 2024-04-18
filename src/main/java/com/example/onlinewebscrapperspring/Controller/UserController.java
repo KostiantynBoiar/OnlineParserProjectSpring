@@ -3,6 +3,7 @@ package com.example.onlinewebscrapperspring.Controller;
 import com.example.onlinewebscrapperspring.Model.UserModel;
 import com.example.onlinewebscrapperspring.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,9 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public UserController(UserService userService) {
         this.userService = userService;
@@ -28,27 +32,29 @@ public class UserController {
         return "adminLogin";
     }
 
-    @GetMapping("/users/get")
+    @GetMapping("/user/get")
     public List<UserModel> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    @PostMapping("/users/post")
-    public void postUser(@RequestBody UserModel userModel) {
-        userService.createUser(userModel);
+    @PostMapping("/register/user")
+    public UserModel createUser(@RequestBody UserModel userModel) {
+        userModel.setPassword(passwordEncoder.encode(userModel.getPassword()));
+        return userService.createUser(userModel);
     }
 
-    @PutMapping("/users/put")
-    public void putUser(@RequestBody UserModel userModel) {
-        userService.updateUser(userModel);
+    @PutMapping("/user/update")
+    public UserModel updateUser(@RequestBody UserModel userModel) {
+        userModel.setPassword(passwordEncoder.encode(userModel.getPassword()));
+        return userService.updateUser(userModel);
     }
 
-    @DeleteMapping("/users/delete/id")
+    @DeleteMapping("/user/delete/id")
     public void deleteById(Long id){
         userService.deleteUser(id);
     }
 
-    @DeleteMapping("/users/delete/email")
+    @DeleteMapping("/user/delete/email")
     public void deleteByEmail(String email){
         userService.deleteByEmail(email);
     }

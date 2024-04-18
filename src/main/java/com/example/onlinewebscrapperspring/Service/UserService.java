@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService {
+public class UserService  {
     private UserRepository userRepository;
 
     @Autowired
@@ -22,11 +22,11 @@ public class UserService {
     public Optional<UserModel> getUserById(Long id) {
         return userRepository.findById(id);
     }
-    public void createUser(UserModel userModel) {
-        userRepository.save(userModel);
+    public UserModel createUser(UserModel userModel) {
+       return userRepository.save(userModel);
     }
-    public void updateUser(UserModel userModel) {
-        userRepository.save(userModel);
+    public UserModel updateUser(UserModel userModel) {
+        return userRepository.save(userModel);
     }
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
