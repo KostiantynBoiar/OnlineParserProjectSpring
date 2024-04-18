@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebMvc
-@PropertySource("classpath:users-service-application.properties")
+@PropertySource("classpath:users/users-service-application.properties")
 public class WebConfiguration {
 
 }

@@ -1,4 +1,4 @@
-package com.example.onlinewebscrapperspring.Microservices.ProductService.Model;
+package com.scrapper.productmicroservice.Model;
 
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,6 +1,5 @@
 package com.example.onlinewebscrapperspring.Microservices.UserService;
 
-import com.example.onlinewebscrapperspring.Microservices.ProductService.ProductMicroserviceApplication;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

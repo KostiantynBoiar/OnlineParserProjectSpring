@@ -1,7 +1,8 @@
-package com.example.onlinewebscrapperspring.Microservices.ProductService.Controller;
+package com.scrapper.productmicroservice.Controller;
 
-import com.example.onlinewebscrapperspring.Microservices.ProductService.Model.ProductsModel;
-import com.example.onlinewebscrapperspring.Microservices.ProductService.Service.ProductService;
+
+import com.scrapper.productmicroservice.Model.ProductsModel;
+import com.scrapper.productmicroservice.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
