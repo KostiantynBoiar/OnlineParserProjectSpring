@@ -18,6 +18,16 @@ public class UserController {
         this.userService = userService;
     }
 
+    @GetMapping("/user/login")
+    public String login() {
+        return "loginUser";
+    }
+
+    @GetMapping("/admin/login")
+    public String adminLogin() {
+        return "adminLogin";
+    }
+
     @GetMapping("/users/get")
     public List<UserModel> getAllUsers() {
         return userService.getAllUsers();
