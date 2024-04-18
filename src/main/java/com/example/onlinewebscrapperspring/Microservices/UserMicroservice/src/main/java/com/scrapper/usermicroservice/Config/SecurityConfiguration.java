@@ -1,4 +1,4 @@
-package com.example.onlinewebscrapperspring.Microservices.UserService.Config;
+package com.scrapper.usermicroservice.Config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

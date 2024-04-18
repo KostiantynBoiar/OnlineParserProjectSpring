@@ -1,7 +1,7 @@
-package com.example.onlinewebscrapperspring.Microservices.UserService.Service;
+package com.scrapper.usermicroservice.Service;
 
-import com.example.onlinewebscrapperspring.Microservices.UserService.Model.UserModel;
-import com.example.onlinewebscrapperspring.Microservices.UserService.Repository.UserRepository;
+import com.scrapper.usermicroservice.Model.UserModel;
+import com.scrapper.usermicroservice.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

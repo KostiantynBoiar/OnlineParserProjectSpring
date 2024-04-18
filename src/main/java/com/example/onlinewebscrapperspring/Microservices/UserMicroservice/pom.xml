@@ -9,13 +9,14 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.scrapper</groupId>
-    <artifactId>ProductMicroservice</artifactId>
+    <artifactId>UserMicroservice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ProductMicroservice</name>
-    <description>ProductMicroservice</description>
+    <name>UserMicroservice</name>
+    <description>UserMicroservice</description>
     <properties>
         <java.version>17</java.version>
         <spring-cloud.version>2023.0.1</spring-cloud.version>
+
     </properties>
     <dependencies>
         <!--
@@ -74,6 +75,10 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
 
     </dependencies>
     <dependencyManagement>
@@ -93,14 +98,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
             </plugin>
         </plugins>
     </build>

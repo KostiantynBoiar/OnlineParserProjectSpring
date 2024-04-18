@@ -1,7 +1,7 @@
-package com.example.onlinewebscrapperspring.Microservices.UserService.Controller;
+package com.scrapper.usermicroservice.Controller;
 
-import com.example.onlinewebscrapperspring.Microservices.UserService.Model.UserModel;
-import com.example.onlinewebscrapperspring.Microservices.UserService.Service.UserService;
+import com.scrapper.usermicroservice.Model.UserModel;
+import com.scrapper.usermicroservice.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
