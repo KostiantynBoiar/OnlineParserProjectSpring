@@ -39,4 +39,5 @@ python/venv
 
 ### JS ###
 
-node_modules/
+web-scrapper-front-side/node_modules/
+web-scrapper-front-side/public/

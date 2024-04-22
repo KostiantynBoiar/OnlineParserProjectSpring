@@ -8,7 +8,7 @@ from selenium.webdriver.firefox.options import Options
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 
-def scrapper(main_url):
+def scrapper(main_url = 'https://rozetka.com.ua/ua/notebooks/c80004/'):
 
     options = Options()
     options.add_argument('--headless')
@@ -54,6 +54,6 @@ def scrapper(main_url):
 
     finally:
         driver.quit()
+
     update_product(items)
-if __name__ == '__main__':
-    scrapper('https://rozetka.com.ua/ua/notebooks/c80004/')
+
