@@ -35,4 +35,4 @@ build/
 
 ### Python ###
 
-python/scrapper/scrapperenv
+python/venv
