@@ -36,3 +36,7 @@ build/
 ### Python ###
 
 python/venv
+
+### JS ###
+
+node_modules/

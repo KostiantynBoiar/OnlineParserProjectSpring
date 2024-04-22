@@ -23,9 +23,10 @@ def scrapper(main_url):
         id = 0
        # print(soup)
         print(last_page)
-        for i in range(1, 2):
+        for i in range(1, int(last_page)):
             
-            url = driver.get(f'{main_url}/page={i}/')
+            url = f'{main_url}/page={i}/'
+            driver.get(url)
             print(url)
             html_content = driver.page_source
             soup = BeautifulSoup(html_content, 'lxml')
@@ -41,7 +42,7 @@ def scrapper(main_url):
                 card_price = (cards.find(class_='goods-tile__price-value').text).replace('₴', '').replace('\xa0', '')
                 card_description = (''.join(card_name_until[1::])).replace('Ноутбук', '')
                 img = ''
-                card_category = 'laptops'
+                card_category = (url.split('/'))[4]
 
                 row = id, card_price, card_brand, card_category, card_description, img, card_name
                 items.append(row)
