@@ -1,6 +1,7 @@
 from configparser import ConfigParser
+import os
 
-def load_config(filename='database.ini', section='postgresql'):
+def load_config(filename=os.path.join(os.path.dirname(__file__), 'database.ini'), section='postgresql'):
     parser = ConfigParser()
     parser.read(filename)
 
@@ -16,4 +17,4 @@ def load_config(filename='database.ini', section='postgresql'):
 
 if __name__ == '__main__':
     load_config()
-    print(load_config)
+    print(load_config())
