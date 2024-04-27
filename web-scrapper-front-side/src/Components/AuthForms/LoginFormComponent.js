@@ -1,61 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import axios from 'axios';
+import AuthService from '../../Services/AuthService';
+
 
 axios.defaults.baseURL = 'http://localhost:8081';
 axios.defaults.withCredentials = true;
 
-const LoginFormComponent = () => {
-  // State to hold form data
-  const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-  });
+class LoginFormComponent extends Component{
 
-  // Handler for form input changes
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  // Handler for form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      // Send login request to the backend
-      const response = await axios.post('/login', formData);
-      console.log(response.data); // Handle success response
-    } catch (error) {
-      console.error('Login failed:', error); // Handle error
+  constructor(props){
+    super(props)
+    this.state = {
+      username: 'test',
+      password: 'test',
+      hasLoginFailed: false,
+      showSuccessMessage: false
     }
-  };
+    this.handleChange = this.handleChange.bind(this)
+    this.loginClicked = this.loginClicked.bind(this)
+  }
 
-  return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-    </div>
-  );
-};
+  handleChange(event) {
+    this.setState(
+        {
+            [event.target.name]
+                : event.target.value
+        }
+    )
+}
+
+  loginClicked() {
+          if(this.state.username==='test' && this.state.password==='test'){
+            AuthService.registerSuccessfulLogin(this.state.username,this.state.password)
+              this.setState({showSuccessMessage:true})
+              this.setState({hasLoginFailed:false})
+          }
+          else {
+              this.setState({showSuccessMessage:false})
+              this.setState({hasLoginFailed:true})
+          }
+      }
+
+      render() {
+        return (
+            <div>
+                <h1>Login</h1>
+                <div className="container">
+                    {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
+                    {this.state.showSuccessMessage && <div>Login Sucessful</div>}
+                    User Name: <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
+                    Password: <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+                    <button className="btn btn-success" onClick={this.loginClicked}>Login</button>
+                </div>
+            </div>
+        )
+    }
+}
 
 export default LoginFormComponent;

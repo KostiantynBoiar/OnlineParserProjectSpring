@@ -41,5 +41,5 @@ python/venv
 
 node_modules/
 public/
-node_modules/
+web-scrapper-front-side/node_modules/
 public/
