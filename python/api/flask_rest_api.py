@@ -1,5 +1,5 @@
 from flask import *
-from scrapper.rozetka_scrapper import *
+from rozetka_scrapper import *
 
 app = Flask(__name__)
 

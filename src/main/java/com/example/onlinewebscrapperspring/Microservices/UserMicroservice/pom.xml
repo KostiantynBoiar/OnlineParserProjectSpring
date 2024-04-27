@@ -13,11 +13,13 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>UserMicroservice</name>
     <description>UserMicroservice</description>
+
     <properties>
         <java.version>17</java.version>
         <spring-cloud.version>2023.0.1</spring-cloud.version>
-
     </properties>
+
+
     <dependencies>
         <!--
         <dependency>
@@ -79,7 +81,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -93,6 +94,15 @@
         </dependencies>
     </dependencyManagement>
 
+    <distributionManagement>
+        <repository>
+            <id>auth-service</id>
+            <url>http://localhost:8081/login</url>
+
+        </repository>
+
+    </distributionManagement>
+
     <build>
         <plugins>
             <plugin>
@@ -101,5 +111,16 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>deploymentProfile</id>
+            <properties>
+                <serverId>deploymentRepo</serverId>
+                <serverUsername>user</serverUsername>
+                <serverPassword>user</serverPassword>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>
