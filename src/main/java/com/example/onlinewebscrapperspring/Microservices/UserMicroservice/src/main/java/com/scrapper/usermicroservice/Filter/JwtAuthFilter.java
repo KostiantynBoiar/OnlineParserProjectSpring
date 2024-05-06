@@ -1,6 +1,7 @@
 package com.scrapper.usermicroservice.Filter;
 
 import com.scrapper.usermicroservice.Service.JwtService;
+import com.scrapper.usermicroservice.Service.UserInfoDetailsService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -25,7 +26,7 @@ public class JwtAuthFilter  extends OncePerRequestFilter {
     private JwtService jwtService;
 
     @Autowired
-    private UserInfoUserDetailsService userDetailsService;
+    private UserInfoDetailsService userDetailsService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {

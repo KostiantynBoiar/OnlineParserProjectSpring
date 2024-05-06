@@ -1,4 +1,7 @@
-import com.javatechie.filter.JwtAuthFilter;
+package com.scrapper.usermicroservice.Config;
+
+import com.scrapper.usermicroservice.Filter.JwtAuthFilter;
+import com.scrapper.usermicroservice.Service.UserInfoDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,14 +27,15 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfiguration {
+
     @Autowired
     private JwtAuthFilter authFilter;
 
     @Bean
     //authentication
     public UserDetailsService userDetailsService() {
-//        UserDetails admin = User.withUsername("Basant")
-//                .password(encoder.encode("Pwd1"))
+ //       UserDetails admin = User.withUsername("Basant")
+//                  .password(encoder.encode("Pwd1"))
 //                .roles("ADMIN")
 //                .build();
 //        UserDetails user = User.withUsername("John")
@@ -39,7 +43,7 @@ public class SecurityConfiguration {
 //                .roles("USER","ADMIN","HR")
 //                .build();
 //        return new InMemoryUserDetailsManager(admin, user);
-        return new UserInfoUserDetailsService();
+        return new UserInfoDetailsService();
     }
 
     @Bean

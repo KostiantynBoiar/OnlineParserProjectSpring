@@ -1,7 +1,8 @@
 package com.scrapper.usermicroservice.Service;
 
+import com.scrapper.usermicroservice.Config.UserInfoDetails;
 import com.scrapper.usermicroservice.Model.UserModel;
-import com.scrapper.usermicroservice.Repository.UserInfoRepository;
+import com.scrapper.usermicroservice.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,12 +15,13 @@ import java.util.Optional;
 public class UserInfoDetailsService implements UserDetailsService {
 
     @Autowired
-    private UserInfoRepository repository;
+    private UserRepository repository;
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<UserModel> userInfo = repository.findByName(username);
-        return userInfo.map(UserDetailsService::new)
+        Optional<UserModel> userInfo = repository.findByUsername(username);
+        return userInfo.map(UserInfoDetails::new)
                 .orElseThrow(() -> new UsernameNotFoundException("user not found " + username));
 
     }
