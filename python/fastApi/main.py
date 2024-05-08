@@ -4,16 +4,32 @@ TODO:
     from the other websites
 """
 
-from fastapi import FastAPI, APIRouter, status
+import models
+import items
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from database import engine, Base
+
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-router = APIRouter()
+origins = [
+    "http://localhost:3000",
+]
 
-@router.get("/api/v1/products/", status_code=status.HTTP_200_OK)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+app.include_router(items.router, tags=['Products'], prefix='/api/v1/products')
+
+
+@app.get("/api/healthchecker")
 def root():
-    return {"message": "Welcome to FastAPI with SQLAlchemy"}
-
-@router.post("/api/v1/products/post/{shop_name}", status_code=status.HTTP_200_OK)
-def post_products(shop_name: str):
     return {"message": "Welcome to FastAPI with SQLAlchemy"}
