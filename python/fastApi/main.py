@@ -30,6 +30,6 @@ app.add_middleware(
 app.include_router(items.router, tags=['Products'], prefix='/api/v1/products')
 
 
-@app.get("/api/healthchecker")
+@app.get("/api/v1/hello")
 def root():
     return {"message": "Welcome to FastAPI with SQLAlchemy"}
