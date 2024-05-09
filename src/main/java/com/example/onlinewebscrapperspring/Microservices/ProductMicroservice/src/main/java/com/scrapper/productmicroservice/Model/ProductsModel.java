@@ -26,5 +26,7 @@ public class ProductsModel {
     private String category;
     @Column(name = "brand")
     private String brand;
+    @Column(name = "timestamp")
+    private String timestamp;
 
 }

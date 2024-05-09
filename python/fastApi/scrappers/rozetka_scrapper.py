@@ -2,11 +2,9 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
-from sqlalchemy.orm import Session
-import time
-from models import Products
+import datetime
 
-def scrapper(db: Session, main_url='https://rozetka.com.ua/ua/notebooks/c80004/'):
+def scrapper(main_url='https://rozetka.com.ua/ua/notebooks/c80004/') -> list:
 
     options = Options()
     options.add_argument('--headless')
@@ -16,14 +14,14 @@ def scrapper(db: Session, main_url='https://rozetka.com.ua/ua/notebooks/c80004/'
 
     try:
         driver.get(main_url)
-        time.sleep(2)
+        driver.implicitly_wait(2)
         last_page = driver.find_element(By.CSS_SELECTOR,
                                         'body > rz-app-root > div > div > rz-category > div > main > rz-catalog > div > div > section > rz-catalog-paginator > app-paginator > div > ul > li:last-child > a').text
         id = 0
         # print(soup)
         print(f'Last page: {last_page}')
 
-        for i in range(1, int(last_page)):
+        for i in range(1, 5):#int(last_page)):
 
             url = f'{main_url}/page={i}/'
             driver.get(url)
@@ -43,30 +41,16 @@ def scrapper(db: Session, main_url='https://rozetka.com.ua/ua/notebooks/c80004/'
                 card_description = (''.join(card_name_until[1:])).replace('Ноутбук', '')
                 img = ''
                 card_category = (url.split('/'))[4]
-
-                row = id, 'card_price', 'card_brand', 'card_category', 'card_description', 'img', 'card_name'
+                timestamp = datetime.datetime.now().strftime('%d.%m.%Y %H:%M:%S')
+                row = id, card_price, card_brand, card_category, card_description, img, card_name, timestamp
                 items.append(row)
 
 
-                # Create an instance of Products model
-                product = Products(
-                    id=id,
-                    brand=card_brand,
-                    category=card_category,
-                    price=card_price,
-                    image=img,
-                    description=card_description,
-                    name=card_name
-                )
-
-                # Add the instance to the session
-                db.add(product)
-
-            # Commit the changes to the database
-            db.commit()
 
     except Exception as e:
         print(f'Exception, something went wrong! {e}')
 
     finally:
         driver.quit()
+        return items
+

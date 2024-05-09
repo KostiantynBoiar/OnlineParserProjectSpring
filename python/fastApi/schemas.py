@@ -9,6 +9,7 @@ class ItemBaseSchema(BaseModel):
     image: str | None = None
     description: str | None = None
     url: str | None = None
+    timestamp: str | None = None
 
     class Config:
         orm_mode = True

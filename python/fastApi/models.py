@@ -1,5 +1,5 @@
 from database import Base
-from sqlalchemy import TIMESTAMP, Column, String, Boolean
+from sqlalchemy import TIMESTAMP, Column, String, Boolean, Integer
 from sqlalchemy.sql import func
 from fastapi_utils.guid_type import GUID, GUID_SERVER_DEFAULT_POSTGRESQL
 
@@ -7,7 +7,7 @@ from fastapi_utils.guid_type import GUID, GUID_SERVER_DEFAULT_POSTGRESQL
 class Products(Base):
 
     __tablename__ = 'products_scrapper'
-    id = Column(GUID, primary_key=True,
+    id = Column(Integer, primary_key=True,
             server_default=GUID_SERVER_DEFAULT_POSTGRESQL)
     brand = Column(String)
     category = Column(String)
@@ -15,3 +15,4 @@ class Products(Base):
     image = Column(String)
     description = Column(String)
     name = Column(String)
+    timestamp = Column(TIMESTAMP)
