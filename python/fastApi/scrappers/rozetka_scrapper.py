@@ -21,7 +21,7 @@ def scrapper(main_url='https://rozetka.com.ua/ua/notebooks/c80004/') -> list:
         # print(soup)
         print(f'Last page: {last_page}')
 
-        for i in range(1, 5):#int(last_page)):
+        for i in range(1, int(last_page)):
 
             url = f'{main_url}/page={i}/'
             driver.get(url)
