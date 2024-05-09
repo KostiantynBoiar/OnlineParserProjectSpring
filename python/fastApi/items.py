@@ -2,6 +2,7 @@ from fastapi import FastAPI, APIRouter, Depends
 from sqlalchemy.orm import Session
 import models
 from database import get_db
+from scrappers import rozetka_scrapper
 from scrappers.rozetka_scrapper import *
 from models import Products
 
@@ -9,6 +10,8 @@ from models import Products
 app = FastAPI()
 router = APIRouter()
 
+scrapper_map = {"rozetka_scrapper": rozetka_scrapper.scrapper(),
+                "comfy_scrapper": "comfy_scrapper",}
 
 @router.get('/')
 def get_notes(db: Session = Depends(get_db), limit: int = 100, page: int = 1, search: str = ''):
@@ -23,9 +26,15 @@ def get_notes(db: Session = Depends(get_db), limit: int = 100, page: int = 1, se
 @router.post('/post/{shop_name}')
 def scrapper_query(shop_name: str, db: Session = Depends(get_db)):
 
-    _scrapper = scrapper()
 
-    # Iterate over each row in _scrapper
+    if f'{shop_name}_scrapper' in scrapper_map:
+
+        scrapper_function = scrapper_map[shop_name]
+        _scrapper = scrapper_function()
+
+    else:
+        return {'status': 'error', 'message': 'Shop name not found'}
+
     for row in _scrapper:
         # Check if a product with the same ID already exists
         existing_product = db.query(Products).filter_by(id=row[0]).first()
