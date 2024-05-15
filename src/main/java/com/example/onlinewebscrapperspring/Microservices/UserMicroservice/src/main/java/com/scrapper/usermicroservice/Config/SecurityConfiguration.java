@@ -50,7 +50,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.cors().disable().csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/products/new","/auth", "/login", "/api/v1/users/*").permitAll()
+                .requestMatchers("/products/new","/api/v1/users/auth", "/login", "/api/v1/users/*").permitAll()
                 .and()
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)

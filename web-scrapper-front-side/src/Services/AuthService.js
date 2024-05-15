@@ -5,10 +5,12 @@ const API_URL = 'http://localhost:8081';
 export const USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser';
 
 class AuthService {
-
+    
     executeBasicAuthenticationService(username, password) {
-        return axios.get(`${API_URL}/api/v1/users/auth`, {
-            headers: { Authorization: this.createBasicAuthToken(username, password) }
+        console.log("Sending POST request...");
+        return axios.post(`${API_URL}/api/v1/users/auth`, {
+            username: username,
+            password: password
         });
     }
 
