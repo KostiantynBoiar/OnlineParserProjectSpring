@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 import models
 from database import get_db
 from scrappers import rozetka_scrapper
-from scrappers.rozetka_scrapper import *
+from scrappers.rozetka_scrapper import scrapper
 from models import Products
 
 

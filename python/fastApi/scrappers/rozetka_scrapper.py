@@ -4,6 +4,12 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
 import datetime
 
+"""
+TODO:
+    make this scrapper asynchronous
+"""
+
+
 def scrapper(main_url='https://rozetka.com.ua/ua/notebooks/c80004/') -> list:
 
     options = Options()
@@ -21,7 +27,7 @@ def scrapper(main_url='https://rozetka.com.ua/ua/notebooks/c80004/') -> list:
         # print(soup)
         print(f'Last page: {last_page}')
 
-        for i in range(1, int(last_page)):
+        for i in range(1, int(5)):
 
             url = f'{main_url}/page={i}/'
             driver.get(url)

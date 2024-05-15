@@ -21,27 +21,27 @@ public class ProductsController {
     }
 
 
-    @GetMapping("/products/api/get")
+    @GetMapping("/products/api/v1/")
     public List<ProductsModel> getProducts(){
         return productService.getAllProducts();
     }
-    @PostMapping("/products/api/post")
+    @PostMapping("/products/api/v1/post")
     public void addProduct(@RequestBody ProductsModel product){
         productService.addProduct(product);
     }
-    @PutMapping("/products/api/put")
+    @PutMapping("/products/api/v1/put")
     public void updateProduct(@RequestBody ProductsModel product){
         productService.updateProduct(product);
     }
-    @DeleteMapping("/products/api/delete")
+    @DeleteMapping("/products/api/v1/delete")
     public void deleteProduct(@RequestBody ProductsModel product){
         productService.deleteProduct(product);
     }
-    @DeleteMapping("/products/api/delete/all")
+    @DeleteMapping("/products/api/delete/v1/all")
     public void deleteAllProducts(){
         productService.deleteAllProducts();
     }
-    @DeleteMapping("/products/api/delete/id")
+    @DeleteMapping("/products/api/delete/v1/id")
     public void deleteAllProductsById(@RequestParam Long id){
         productService.deleteProductById(id);
     }
