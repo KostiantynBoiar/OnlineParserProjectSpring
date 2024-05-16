@@ -1,9 +1,10 @@
 import React from 'react';
 import LoginFormComponent from './Components/AuthForms/LoginFormComponent';
+import ProductsComponent from './Components/Products/ProductsComponent';
 
 function App() {
   return (
-    <LoginFormComponent/>
+    <ProductsComponent/>
   );
 }
 
