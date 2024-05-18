@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import ScrapperButton from './ScrapperButton';
+import DeleteButton from './DeleteButton';
+
 
 class ProductsComponent extends Component {
     state = {
@@ -23,6 +26,7 @@ class ProductsComponent extends Component {
     render() {
         return (
             <div>
+                <ScrapperButton shopName={'rozetka'}/>
                 <h1>All Products</h1>
                 <table>
                     <thead>
@@ -48,6 +52,7 @@ class ProductsComponent extends Component {
                                 <td>{product.category}</td>
                                 <td>{product.brand}</td>
                                 <td>{product.timestamp}</td>
+                                <DeleteButton id = {parseInt(product.id)}/>
                             </tr>
                         ))}
                     </tbody>

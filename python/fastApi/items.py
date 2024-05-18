@@ -29,8 +29,8 @@ def scrapper_query(shop_name: str, db: Session = Depends(get_db)):
 
     if f'{shop_name}_scrapper' in scrapper_map:
 
-        scrapper_function = scrapper_map[shop_name]
-        _scrapper = scrapper_function()
+        print(scrapper_map[f'{shop_name}_scrapper'])
+        _scrapper = rozetka_scrapper.scrapper()
 
     else:
         return {'status': 'error', 'message': 'Shop name not found'}

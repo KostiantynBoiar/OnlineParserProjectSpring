@@ -4,6 +4,7 @@ package com.scrapper.productmicroservice.Controller;
 import com.scrapper.productmicroservice.Model.ProductsModel;
 import com.scrapper.productmicroservice.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @Controller
+@CrossOrigin
 public class ProductsController {
     @Autowired
     private final ProductService productService;
@@ -41,8 +43,9 @@ public class ProductsController {
     public void deleteAllProducts(){
         productService.deleteAllProducts();
     }
-    @DeleteMapping("/api/v1/products/id")
-    public void deleteAllProductsById(@RequestParam Long id){
+    @DeleteMapping("/api/v1/products/delete/id/{id}")
+    public ResponseEntity<String> deleteProduct(@PathVariable("id") Long id) {
         productService.deleteProductById(id);
+        return ResponseEntity.ok("Product deleted successfully");
     }
 }
