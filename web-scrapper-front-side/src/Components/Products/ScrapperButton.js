@@ -2,11 +2,10 @@ import React from 'react';
 import axios from 'axios';
 
 const ScrapperButton = ({ shopName }) => {
-    
     const handleClick = () => {
         axios.post(`http://127.0.0.1:8000/api/v1/products/post/${shopName}/`)
             .then(response => {
-                console.log(response.data); // Handle response as needed
+                console.log(response.data);
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -14,7 +13,9 @@ const ScrapperButton = ({ shopName }) => {
     };
 
     return (
-        <button onClick={handleClick}>Run Scrapper for {shopName}</button>
+        <button onClick={handleClick} disabled={!shopName}>
+            Run Scrapper for {shopName}
+        </button>
     );
 };
 

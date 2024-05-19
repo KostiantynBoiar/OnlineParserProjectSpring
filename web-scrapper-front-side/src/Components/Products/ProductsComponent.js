@@ -2,10 +2,23 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ScrapperButton from './ScrapperButton';
 import DeleteButton from './DeleteButton';
+import DropDown from './DropDown';
+
 
 
 class ProductsComponent extends Component {
+    
+
+    markets = [
+        'rozetka',
+        'comfy',
+        'allo',
+        'fua'
+    ]
+
+    
     state = {
+        selectedMarket: '',
         products: []
     };
 
@@ -23,10 +36,15 @@ class ProductsComponent extends Component {
             });
     };
 
+    handleMarketSelect = (selectedMarket) => {
+        this.setState({ selectedMarket });
+    };
+    
     render() {
         return (
             <div>
-                <ScrapperButton shopName={'rozetka'}/>
+                <DropDown marketsList={this.markets} onMarketSelect={this.handleMarketSelect} />
+                <ScrapperButton shopName={this.state.selectedMarket} />
                 <h1>All Products</h1>
                 <table>
                     <thead>
@@ -52,7 +70,7 @@ class ProductsComponent extends Component {
                                 <td>{product.category}</td>
                                 <td>{product.brand}</td>
                                 <td>{product.timestamp}</td>
-                                <DeleteButton id = {parseInt(product.id)}/>
+                                <DeleteButton id = {parseInt(product)}/>
                             </tr>
                         ))}
                     </tbody>
