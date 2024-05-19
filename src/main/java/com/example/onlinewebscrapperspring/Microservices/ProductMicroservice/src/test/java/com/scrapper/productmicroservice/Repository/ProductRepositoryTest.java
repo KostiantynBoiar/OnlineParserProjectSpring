@@ -50,15 +50,10 @@ public class ProductRepositoryTest {
                 .build();
 
         productRepository.save(pm);
-        boolean isDeleted = false;
-        try {
-            productRepository.deleteById(pm.getId());
-            isDeleted = true;
-        }catch (Exception e) {
-            isDeleted = false;
-        }finally {
-            Assertions.assertTrue(isDeleted);
-        }
+        productRepository.deleteById(pm.getId());
+
+        boolean deleted = productRepository.existsById(pm.getId());
+        Assertions.assertFalse(deleted);
     }
 }
 
