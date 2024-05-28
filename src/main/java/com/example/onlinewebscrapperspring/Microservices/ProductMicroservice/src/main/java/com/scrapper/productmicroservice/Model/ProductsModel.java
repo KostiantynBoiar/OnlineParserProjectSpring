@@ -2,6 +2,7 @@ package com.scrapper.productmicroservice.Model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.redis.core.RedisHash;
 
 @Entity
 @Table(name = "products_scrapper")
@@ -11,6 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @Builder
+//@RedisHash("Products")
 public class ProductsModel {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)

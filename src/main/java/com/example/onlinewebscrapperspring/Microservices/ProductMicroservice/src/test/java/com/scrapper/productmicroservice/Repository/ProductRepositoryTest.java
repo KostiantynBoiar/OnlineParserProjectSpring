@@ -43,13 +43,13 @@ public class ProductRepositoryTest {
     @Test
     public void ProductRepository_DeleteById_ReturnDeletedProduct() {
         ProductsModel pm = ProductsModel.builder()
+                .id(1L)
                 .name("Iphone 15 Pro Max")
                 .brand("Iphone 15")
                 .price(1000)
                 .category("Phones")
                 .build();
 
-        productRepository.save(pm);
         productRepository.deleteById(pm.getId());
 
         boolean deleted = productRepository.existsById(pm.getId());

@@ -4,6 +4,7 @@ package com.scrapper.productmicroservice.Service;
 import com.scrapper.productmicroservice.Model.ProductsModel;
 import com.scrapper.productmicroservice.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
+    //@Cacheable(value = "product")
     public List<ProductsModel> getAllProducts() {
         return productRepository.findAll();
     }

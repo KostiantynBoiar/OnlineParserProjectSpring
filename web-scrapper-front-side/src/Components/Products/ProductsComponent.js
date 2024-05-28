@@ -30,6 +30,7 @@ class ProductsComponent extends Component {
         axios.get('http://localhost:8082/api/v1/products')
             .then(response => {
                 this.setState({ products: response.data });
+                
             })
             .catch(error => {
                 console.log(error);
@@ -70,7 +71,7 @@ class ProductsComponent extends Component {
                                 <td>{product.category}</td>
                                 <td>{product.brand}</td>
                                 <td>{product.timestamp}</td>
-                                <DeleteButton id = {parseInt(product)}/>
+                                <DeleteButton id = {product.id}/>
                             </tr>
                         ))}
                     </tbody>

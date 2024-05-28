@@ -6,6 +6,7 @@ const ScrapperButton = ({ shopName }) => {
         axios.post(`http://127.0.0.1:8000/api/v1/products/post/${shopName}/`)
             .then(response => {
                 console.log(response.data);
+                window.location.reload();
             })
             .catch(error => {
                 console.error('Error:', error);
