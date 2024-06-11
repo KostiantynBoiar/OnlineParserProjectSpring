@@ -6,7 +6,7 @@ import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 
-/*
+
 @Configuration
 @EnableRedisRepositories
 public class RedisConfiguration {
@@ -17,6 +17,7 @@ public class RedisConfiguration {
                 = new JedisConnectionFactory();
         jedisConFactory.setHostName("localhost");
         jedisConFactory.setPort(6379);
+        System.out.println("Redis has been connected");
         return jedisConFactory;
     }
 
@@ -28,4 +29,3 @@ public class RedisConfiguration {
     }
 
 }
-*/

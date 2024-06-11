@@ -10,7 +10,7 @@ TODO:
 """
 
 
-def scrapper(main_url='https://rozetka.com.ua/ua/notebooks/c80004/') -> list:
+def scrapper(main_url='https://rozetka.com.ua/ua/notebooks/c80004') -> list:
 
     options = Options()
     options.add_argument('--headless')

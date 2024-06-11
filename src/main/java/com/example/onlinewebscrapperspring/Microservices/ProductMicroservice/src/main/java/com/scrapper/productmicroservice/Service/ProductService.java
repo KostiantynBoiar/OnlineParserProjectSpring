@@ -18,7 +18,7 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    //@Cacheable(value = "product")
+    @Cacheable(value = "product")
     public List<ProductsModel> getAllProducts() {
         return productRepository.findAll();
     }
