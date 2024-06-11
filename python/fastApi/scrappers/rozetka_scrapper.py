@@ -58,5 +58,6 @@ def scrapper(main_url='https://rozetka.com.ua/ua/notebooks/c80004') -> list:
 
     finally:
         driver.quit()
+        print(items)
         return items
 
