@@ -128,6 +128,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>spring-boot-products-microservice</finalName>
     </build>
 
 </project>
