@@ -35,7 +35,7 @@ class LoginFormComponent extends Component {
             .catch(error => {
                 // If authentication fails, update state to show error message
                 this.setState({
-                    loginError: 'Invalid credentials' // Show error message
+                    loginError: 'Invalid credentials'
                 });
             });
     }

@@ -2,7 +2,7 @@ const HomeComponent = () => {
 
     return (
         <>
-            Home
+            
         </>
     );
 }
